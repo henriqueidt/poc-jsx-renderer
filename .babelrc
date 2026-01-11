@@ -1,7 +1,11 @@
 {
   "presets": [
     [
-      "@babel/preset-react"
+      "@babel/preset-react",
+      {
+        "pragma": "structureNode",
+        "pragmaFrag": "structureNode"
+      }
     ]
   ]
 }
