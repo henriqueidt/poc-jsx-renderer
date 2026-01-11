@@ -8,7 +8,7 @@ function render(node) {
     return document.createTextNode(node);
   }
 
-  let domEl = document.createElement(node.name);
+  let domEl = document.createElement(node.nodeName);
 
   let attributes = node.attributes || {};
   Object.keys(attributes).forEach((k) => {
@@ -22,7 +22,32 @@ function render(node) {
   return domEl;
 }
 
-let virtualDom = <div className="test-div">hello world!</div>;
+const list = [
+  {
+    name: 'John',
+    age: 22
+  },
+  {
+    name: 'Arya',
+    age: 18
+  },
+  {
+    name: 'Sansa',
+    age: 24
+  },
+]
+
+let virtualDom = 
+<div className="test-div">
+  <ul>
+    {list.map(item => (
+      <li>
+        <div>{item.name}</div>
+        <div>{item.age}</div>
+      </li>
+    ))}
+  </ul>
+</div>;
 
 let dom = render(virtualDom);
 
